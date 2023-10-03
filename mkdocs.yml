@@ -1,4 +1,4 @@
-site_name: Qitmeer/ Meerlabs Community Documents
+site_name: Qitmeer/Meerlabs Community Documents
 
 repo_name: Qitmeer/community_docs
 repo_url: https://github.com/Qitmeer/community_docs
@@ -11,6 +11,8 @@ nav:
   - Solidity Tutorial (Part 1): solidity_tutorial_basics_part_1.md
   - Solidity Tutorial (Part 2): solidity_tutorial_basics_part_2.md
   - Solidity Tutorial (Part 3): solidity_tutorial_basics_part_3.md
+  - Deploy Private Amana Network: deploy_private_amana_network.md
+  - Deploy Private Amana Network (AWS): AWS_deploy_amana_privnet.md
   
 
 theme:

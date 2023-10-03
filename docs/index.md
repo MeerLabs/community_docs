@@ -44,6 +44,8 @@ Name conventions used in the Qitmeer blockchain system and networks are as follo
 * [Solidity Tutorial (Part 1)](solidity_tutorial_basics_part_1.md)
 * [Solidity Tutorial (Part 2)](solidity_tutorial_basics_part_2.md)
 * [Solidity Tutorial (Part 3)](solidity_tutorial_basics_part_3.md)
+* [Deploy Private Amana Network](deploy_private_amana_network.md)
+* [Deploy Private Amana Network (AWS)](AWS_deploy_amana_privnet.md)
 
 
 For latest Qitmeer project source code visit [Qitmeer/QNG](https://github.com/Qitmeer/qng).

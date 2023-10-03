@@ -7,9 +7,13 @@ This community documents are also used for (docs.meerlabs.com)
 
 To contribute to the documentation please fork this repo and create PR.
 
+
+## Installation - Full
+`pip install -r requirements.txt`
+
 ## Installation - Mkdocs
 `pip install mkdocs` 
-
+ 
 ## Mkdocs Theme - Material
 `pip install mkdocs-material` 
 
