@@ -10,7 +10,7 @@ Amana is a POA network that uses the Clique consensus protocol. The instructions
 
 `build-essential` (we’ll assume you’re using Ubuntu/Debian)
 
-## Clone ****qng**** repository
+## Clone *qng* repository
 
 Amana relies on the existing `qng` node and in our private network, also requires making certain modifications to the `qng/meerevm/amana/genesis.go` file before needing to be compiled. This requires cloning the repository from GitHub.
 
@@ -62,7 +62,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 '0xedC4c57154bF81c28b4ba6263758DA2729897cE5'
 ```
 
-## Generating custom *Extra Data* and ******alloc****** Field
+## Generating custom *extraData* and *alloc* Field
 
 When initialising the genesis block, a custom `extraData` field is needed in order to list the authorised signers on the network. The formula for the `extraData` section in the genesis block is as follows:
 
@@ -164,7 +164,7 @@ func decodePrealloc() core.GenesisAlloc {
 
 In our example each of our sealers has `10000000000` Ether but this value and who recieves it can also be changed.
 
-## Compile ***qng*** binary
+## Compile *qng* binary
 
 Once `genesis.go` has been modified, you will need to compile the source code:
 

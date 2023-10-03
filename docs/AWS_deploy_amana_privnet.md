@@ -2,23 +2,20 @@
 
 A public AMI (Amazon Machine Image) has been created to allow the quick deployment of EC2 instances with Amana nodes and all its dependencies already preconfigured. 
 
-To launch an EC2 instance with the Amana Privnet AMI, on the EC2 Management console, click on **Launch instances***.* In the section **Application and OS Images (Amazon Machine Image)**, click on ********************************Browse more AMIs********************************. 
+To launch an EC2 instance with the Amana Privnet AMI, on the EC2 Management console, click on **Launch instances**. In the section **Application and OS Images (Amazon Machine Image)**, click on **Browse more AMIs**. 
 
-In the search bar, type in “**Meer Labs - Amana Privnet**” or the AMI ID, “**ami-07aca94d110e01229**” and click on the **************************Community AMIs************************** tab. You should see a single AMI entry labelled “**Meer Labs - Amana Privnet”:**
+In the search bar, type in “**Meer Labs - Amana Privnet**” or the AMI ID, “**ami-07aca94d110e01229**” and click on the **Community AMIs** tab. You should see a single AMI entry labelled **"Meer Labs - Amana Privnet”**
 
-![aws ami.PNG](AWS%20-%20Deploy%20Amana%20Privnet%20124cc34c81074d4499f567c0bd9b3790/aws_ami.png)
+![aws_ami.PNG](https://raw.githubusercontent.com/MeerLabs/community_docs_assets/main/img/aws_ami.PNG)
 
 Click select and enter the remaining configuration details for your EC2 instance.
 
-<aside>
-⚠️ The size of the EBS volumes (storage) must be set to at least 20 GiB. This is due to the first instance which created this AMI being configured with a storage space of 20 GiB.
 
-</aside>
+> ⚠️ The size of the EBS volumes (storage) must be set to at least 20 GiB. This is due to the first instance which created this AMI being configured with a storage space of 20 GiB.
 
-<aside>
-⚠️ The minimum instance type that may be able to run all three nodes inside one instance is the `t3.micro`. Although it is recommended to pick an instance type larger than this such as `t3.small` or `t3.medium`.
 
-</aside>
+> ⚠️ The minimum instance type that may be able to run all three nodes inside one instance is the `t3.micro`. Although it is recommended to pick an instance type larger than this such as `t3.small` or `t3.medium`.
+
 
 ## Running Amana Nodes
 
@@ -72,7 +69,6 @@ If the nodes are running successfully, you should see an output like this:
 2023-10-01|05:14:02.002 [INFO ] Imported new chain segment          number=12 hash=ea2ec4..78ffc8
 ```
 
-<aside>
-⚠️ The instructions here are only applicable for running multiple nodes locally on one EC2 instance. If you wish to run the nodes on separate instances, than you must make certain changes to the networking configuration. This may include changes to the config file as well as changes to your EC2 *Security Groups*.
 
-</aside>
+> ⚠️ The instructions here are only applicable for running multiple nodes locally on one EC2 instance. If you wish to run the nodes on separate instances, than you must make certain changes to the networking configuration. This may include changes to the config file as well as changes to your EC2 *Security Groups*.
+

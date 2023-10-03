@@ -1,6 +1,8 @@
 # Welcome to the Community Documents Site
 The Qitmeer community offers documentation and tutorials on Qitmeer, which is maintained and developed by blockchain and open-source enthusiasts.
 
+> Upload any static assets (images, GIFs etc.) to the community docs repository on GitHub: [Meer Labs Community Docs Assets](https://github.com/MeerLabs/community_docs_assets)
+
 Qitmeer is a blockDAG-based public blockchain infrastructure built on PoW. It features a UTXO-based account system and also supports a compatible EVM for the deployment of smart contracts. Qitmeer has a roadmap to support L2 ZK-rollups and other consensus algorithms in the future.
 
 :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
