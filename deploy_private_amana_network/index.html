@@ -1,0 +1,1048 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../solidity_tutorial_basics_part_3/">
+      
+      
+        <link rel="next" href="../AWS_deploy_amana_privnet/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
+    
+    
+      
+        <title>Deploy Private Amana Network - Qitmeer/Meerlabs Community Documents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.79e020e9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploy-private-amana-network" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Qitmeer/Meerlabs Community Documents" class="md-header__button md-logo" aria-label="Qitmeer/Meerlabs Community Documents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Qitmeer/Meerlabs Community Documents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy Private Amana Network
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MeerLabs/community_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Qitmeer/community_docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Qitmeer/Meerlabs Community Documents" class="md-nav__button md-logo" aria-label="Qitmeer/Meerlabs Community Documents" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Qitmeer/Meerlabs Community Documents
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MeerLabs/community_docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Qitmeer/community_docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../What_is_BlockDAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About BlockDAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Installation_Running_qng_node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Qitmeer Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../meerEVM_deploying_SmartContracts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    QNG - EVM & Deploying Smart Contracts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solidity Tutorial (Part 1)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solidity Tutorial (Part 2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../solidity_tutorial_basics_part_3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solidity Tutorial (Part 3)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Deploy Private Amana Network
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Private Amana Network
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-qng-repository" class="md-nav__link">
+    Clone qng repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-directories" class="md-nav__link">
+    Create Directories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-private-keys-address" class="md-nav__link">
+    Generate Private Keys + Address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-custom-extradata-and-alloc-field" class="md-nav__link">
+    Generating custom extraData and alloc Field
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-qng-binary" class="md-nav__link">
+    Compile qng binary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-node-files" class="md-nav__link">
+    Generate Node Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-keystore" class="md-nav__link">
+    Create Keystore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-config-file" class="md-nav__link">
+    Generate Config file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-amana-node" class="md-nav__link">
+    Running Amana Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-proxy" class="md-nav__link">
+    Running Proxy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-acl-smart-contract-to-amana" class="md-nav__link">
+    Deploy ACL Smart Contract to Amana
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AWS_deploy_amana_privnet/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy Private Amana Network (AWS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clone-qng-repository" class="md-nav__link">
+    Clone qng repository
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-directories" class="md-nav__link">
+    Create Directories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-private-keys-address" class="md-nav__link">
+    Generate Private Keys + Address
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-custom-extradata-and-alloc-field" class="md-nav__link">
+    Generating custom extraData and alloc Field
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compile-qng-binary" class="md-nav__link">
+    Compile qng binary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-node-files" class="md-nav__link">
+    Generate Node Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-keystore" class="md-nav__link">
+    Create Keystore
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-config-file" class="md-nav__link">
+    Generate Config file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-amana-node" class="md-nav__link">
+    Running Amana Node
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-proxy" class="md-nav__link">
+    Running Proxy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploy-acl-smart-contract-to-amana" class="md-nav__link">
+    Deploy ACL Smart Contract to Amana
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="deploy-private-amana-network">Deploy Private Amana Network</h1>
+<p>Amana is a POA network that uses the Clique consensus protocol. The instructions below will demonstrate how to create a private, local 3-node network. In practice, an Amana network would only require one node to operate the network.</p>
+<h2 id="requirements">Requirements</h2>
+<p><code>qng</code> Source Code - <a href="https://github.com/Qitmeer/qng">https://github.com/Qitmeer/qng</a></p>
+<p><code>go</code> - <em><code>1.19.x</code></em> or above (<em><code>1.20.x</code></em> is recommended)</p>
+<p><code>build-essential</code> (we’ll assume you’re using Ubuntu/Debian)</p>
+<h2 id="clone-qng-repository">Clone <em>qng</em> repository</h2>
+<p>Amana relies on the existing <code>qng</code> node and in our private network, also requires making certain modifications to the <code>qng/meerevm/amana/genesis.go</code> file before needing to be compiled. This requires cloning the repository from GitHub.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Qitmeer/qng.git
+</span></code></pre></div>
+<h2 id="create-directories">Create Directories</h2>
+<p>We will separate each of the nodes by creating three separate directories: <code>node1</code>, <code>node2</code>, and <code>node3</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir<span class="w"> </span>node1<span class="w"> </span>node2<span class="w"> </span>node3
+</span></code></pre></div>
+<h2 id="generate-private-keys-address">Generate Private Keys + Address</h2>
+<p>Amana POA requires each node to hold its own 256-bit private key for that node to become a sealer on the network. This private key will be used to derive an Ethereum address that must be unlocked to seal blocks. We will use Python and the <code>secrets</code> module included in the Python Standard Library (although you can use alternative means to randomly derive these keys). To generate a private key using <code>secrets</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Python<span class="w"> </span><span class="m">3</span>.10.6<span class="w"> </span><span class="o">(</span>main,<span class="w"> </span>May<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">2023</span>,<span class="w"> </span><span class="m">11</span>:10:38<span class="o">)</span><span class="w"> </span><span class="o">[</span>GCC<span class="w"> </span><span class="m">11</span>.3.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>secrets
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">priv_key_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0x&quot;</span><span class="w"> </span>+<span class="w"> </span>secrets.token_hex<span class="o">(</span><span class="m">32</span><span class="o">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>&gt;&gt;&gt;<span class="w"> </span>priv_key_1
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s1">&#39;0x8c31ac305c9455ee7fdf025bb69a58bc08ee72e78a6fef9ca53cb17975811959&#39;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">priv_key_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0x&quot;</span><span class="w"> </span>+<span class="w"> </span>secrets.token_hex<span class="o">(</span><span class="m">32</span><span class="o">)</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>&gt;&gt;&gt;<span class="w"> </span>priv_key_2
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s1">&#39;0x14abc2f5c4d55398985a9d44a7d0e0ad6e5d8743a3c3e25a79c930f69e12144c&#39;</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">priv_key_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0x&quot;</span><span class="w"> </span>+<span class="w"> </span>secrets.token_hex<span class="o">(</span><span class="m">32</span><span class="o">)</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>&gt;&gt;&gt;<span class="w"> </span>priv_key_3
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s1">&#39;0x8cb9f7d90138c0825a76715e00b2e073fd65da71c43ae51c339fd0c1a7b12d51&#39;</span>
+</span></code></pre></div>
+<p>To retrieve the public address from each of the private keys, we can use the Python package <code>eth-account</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Python<span class="w"> </span><span class="m">3</span>.10.6<span class="w"> </span><span class="o">(</span>main,<span class="w"> </span>May<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">2023</span>,<span class="w"> </span><span class="m">11</span>:10:38<span class="o">)</span><span class="w"> </span><span class="o">[</span>GCC<span class="w"> </span><span class="m">11</span>.3.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&gt;&gt;&gt;<span class="w"> </span>from<span class="w"> </span>eth_account<span class="w"> </span>import<span class="w"> </span>Account
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">address_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Account.from_key<span class="o">(</span><span class="s1">&#39;0x8c31ac305c9455ee7fdf025bb69a58bc08ee72e78a6fef9ca53cb17975811959&#39;</span><span class="o">)</span>.address
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>&gt;&gt;&gt;<span class="w"> </span>address_1
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s1">&#39;0x160d02d70A278De6dfB45a8854319a30D62E9f8E&#39;</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">address_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Account.from_key<span class="o">(</span><span class="s1">&#39;0x14abc2f5c4d55398985a9d44a7d0e0ad6e5d8743a3c3e25a79c930f69e12144c&#39;</span><span class="o">)</span>.address
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>&gt;&gt;&gt;<span class="w"> </span>address_2
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s1">&#39;0xE79544b2A7C0946b42f8e7Cc0bdD6371fa9AD285&#39;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">address_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Account.from_key<span class="o">(</span><span class="s1">&#39;0x8cb9f7d90138c0825a76715e00b2e073fd65da71c43ae51c339fd0c1a7b12d51&#39;</span><span class="o">)</span>.address
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>&gt;&gt;&gt;<span class="w"> </span>address_3
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s1">&#39;0xedC4c57154bF81c28b4ba6263758DA2729897cE5&#39;</span>
+</span></code></pre></div>
+<h2 id="generating-custom-extradata-and-alloc-field">Generating custom <em>extraData</em> and <em>alloc</em> Field</h2>
+<p>When initialising the genesis block, a custom <code>extraData</code> field is needed in order to list the authorised signers on the network. The formula for the <code>extraData</code> section in the genesis block is as follows:</p>
+<p><code>extraData</code> = Vanity (32 Byte) + Addresses of Authorised Signers + Signature (64 Byte)</p>
+<p>In most cases, both vanity and signature are going to be set to all zeroes. </p>
+<p>A short Python script has been created to automate this process further:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">eth_account</span> <span class="kn">import</span> <span class="n">Account</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">vanity</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">*</span> <span class="mi">64</span>   <span class="c1"># 32 bytes</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">sealer_addr_1</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">from_key</span><span class="p">(</span><span class="n">PRIV_KEY_1</span><span class="p">)</span><span class="o">.</span><span class="n">address</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>    <span class="c1"># Truncate &quot;0x&quot;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">sealer_addr_2</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">from_key</span><span class="p">(</span><span class="n">PRIV_KEY_2</span><span class="p">)</span><span class="o">.</span><span class="n">address</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">sealer_addr_3</span> <span class="o">=</span> <span class="n">Account</span><span class="o">.</span><span class="n">from_key</span><span class="p">(</span><span class="n">PRIV_KEY_3</span><span class="p">)</span><span class="o">.</span><span class="n">address</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">sig</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">*</span> <span class="mi">130</span>     <span class="c1"># 65 bytes</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">extraData</span> <span class="o">=</span> <span class="s2">&quot;0x&quot;</span> <span class="o">+</span> <span class="n">vanity</span> <span class="o">+</span> <span class="n">sealer_addr_1</span> <span class="o">+</span> <span class="n">sealer_addr_2</span> <span class="o">+</span> <span class="n">sealer_addr_3</span> <span class="o">+</span> <span class="n">sig</span>
+</span></code></pre></div>
+<p>Once the custom <code>extraData</code> field has been generated, you will need to modify the <code>qng/meerevm/amana/genesis.go</code> file:</p>
+<div class="language-go highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">package</span><span class="w"> </span><span class="nx">amana</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nx">mparams</span><span class="w"> </span><span class="s">&quot;github.com/Qitmeer/qng/meerevm/params&quot;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nx">qparams</span><span class="w"> </span><span class="s">&quot;github.com/Qitmeer/qng/params&quot;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nx">qcommon</span><span class="w"> </span><span class="s">&quot;github.com/ethereum/go-ethereum/common&quot;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="s">&quot;github.com/ethereum/go-ethereum/common/hexutil&quot;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="s">&quot;github.com/ethereum/go-ethereum/core&quot;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="s">&quot;github.com/ethereum/go-ethereum/params&quot;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="s">&quot;math/big&quot;</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="p">)</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="kd">func</span><span class="w"> </span><span class="nx">AmanaGenesis</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="p">{</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="nx">Config</span><span class="p">:</span><span class="w">     </span><span class="nx">mparams</span><span class="p">.</span><span class="nx">AmanaChainConfig</span><span class="p">,</span>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="nx">Nonce</span><span class="p">:</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="nx">Number</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="nx">ExtraData</span><span class="p">:</span><span class="w">  </span><span class="nx">hexutil</span><span class="p">.</span><span class="nx">MustDecode</span><span class="p">(</span><span class="s">&quot;0x000000000000000000000000000000000000000000000000000000000000000071bc4403af41634cda7c32600a8024d54e7f64990000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">),</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="nx">GasLimit</span><span class="p">:</span><span class="w">   </span><span class="mh">0x47b760</span><span class="p">,</span>
+</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="nx">Difficulty</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="nx">Alloc</span><span class="p">:</span><span class="w">      </span><span class="nx">decodePrealloc</span><span class="p">(),</span>
+</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="nx">Timestamp</span><span class="p">:</span><span class="w">  </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">qparams</span><span class="p">.</span><span class="nx">MainNetParam</span><span class="p">.</span><span class="nx">GenesisBlock</span><span class="p">.</span><span class="nx">Block</span><span class="p">().</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()),</span>
+</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="p">}</span>
+</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="kd">func</span><span class="w"> </span><span class="nx">AmanaTestnetGenesis</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="p">{</span>
+</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="nx">Config</span><span class="p">:</span><span class="w">     </span><span class="nx">mparams</span><span class="p">.</span><span class="nx">AmanaTestnetChainConfig</span><span class="p">,</span>
+</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="nx">Nonce</span><span class="p">:</span><span class="w">      </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">        </span><span class="nx">Number</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">        </span><span class="nx">ExtraData</span><span class="p">:</span><span class="w">  </span><span class="nx">hexutil</span><span class="p">.</span><span class="nx">MustDecode</span><span class="p">(</span><span class="s">&quot;0x000000000000000000000000000000000000000000000000000000000000000071bc4403af41634cda7c32600a8024d54e7f64990000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">),</span>
+</span><span id="__span-5-32"><a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">        </span><span class="nx">GasLimit</span><span class="p">:</span><span class="w">   </span><span class="mh">0x47b760</span><span class="p">,</span>
+</span><span id="__span-5-33"><a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">        </span><span class="nx">Difficulty</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-5-34"><a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">        </span><span class="nx">Alloc</span><span class="p">:</span><span class="w">      </span><span class="nx">decodePrealloc</span><span class="p">(),</span>
+</span><span id="__span-5-35"><a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="nx">Timestamp</span><span class="p">:</span><span class="w">  </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">qparams</span><span class="p">.</span><span class="nx">TestNetParam</span><span class="p">.</span><span class="nx">GenesisBlock</span><span class="p">.</span><span class="nx">Block</span><span class="p">().</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()),</span>
+</span><span id="__span-5-36"><a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-37"><a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="p">}</span>
+</span><span id="__span-5-38"><a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>
+</span><span id="__span-5-39"><a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="kd">func</span><span class="w"> </span><span class="nx">AmanaMixnetGenesis</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="p">{</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">        </span><span class="nx">Config</span><span class="p">:</span><span class="w">     </span><span class="nx">mparams</span><span class="p">.</span><span class="nx">AmanaMixnetChainConfig</span><span class="p">,</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">        </span><span class="nx">Nonce</span><span class="p">:</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">        </span><span class="nx">Number</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">        </span><span class="nx">ExtraData</span><span class="p">:</span><span class="w">  </span><span class="nx">hexutil</span><span class="p">.</span><span class="nx">MustDecode</span><span class="p">(</span><span class="s">&quot;0x000000000000000000000000000000000000000000000000000000000000000071bc4403af41634cda7c32600a8024d54e7f64990000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">),</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">        </span><span class="nx">GasLimit</span><span class="p">:</span><span class="w">   </span><span class="mh">0x47b760</span><span class="p">,</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">        </span><span class="nx">Difficulty</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">        </span><span class="nx">Alloc</span><span class="p">:</span><span class="w">      </span><span class="nx">decodePrealloc</span><span class="p">(),</span>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">        </span><span class="nx">Timestamp</span><span class="p">:</span><span class="w">  </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">qparams</span><span class="p">.</span><span class="nx">MixNetParam</span><span class="p">.</span><span class="nx">GenesisBlock</span><span class="p">.</span><span class="nx">Block</span><span class="p">().</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()),</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="p">}</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="kd">func</span><span class="w"> </span><span class="nx">AmanaPrivnetGenesis</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">core</span><span class="p">.</span><span class="nx">Genesis</span><span class="p">{</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">        </span><span class="nx">Config</span><span class="p">:</span><span class="w">     </span><span class="nx">mparams</span><span class="p">.</span><span class="nx">AmanaPrivnetChainConfig</span><span class="p">,</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">        </span><span class="nx">Nonce</span><span class="p">:</span><span class="w">      </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-56"><a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">        </span><span class="nx">Number</span><span class="p">:</span><span class="w">     </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-57"><a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">        </span><span class="c1">// This section needs to be modified</span>
+</span><span id="__span-5-58"><a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">        </span><span class="nx">ExtraData</span><span class="p">:</span><span class="w">  </span><span class="nx">hexutil</span><span class="p">.</span><span class="nx">MustDecode</span><span class="p">(</span><span class="s">&quot;0x0000000000000000000000000000000000000000000000000000000000000000160d02d70A278De6dfB45a8854319a30D62E9f8EE79544b2A7C0946b42f8e7Cc0bdD6371fa9AD285edC4c57154bF81c28b4ba6263758DA2729897cE50000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;</span><span class="p">),</span>
+</span><span id="__span-5-59"><a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">        </span><span class="nx">GasLimit</span><span class="p">:</span><span class="w">   </span><span class="mh">0x47b760</span><span class="p">,</span>
+</span><span id="__span-5-60"><a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">        </span><span class="nx">Difficulty</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-5-61"><a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">        </span><span class="nx">Alloc</span><span class="p">:</span><span class="w">      </span><span class="nx">decodePrealloc</span><span class="p">(),</span>
+</span><span id="__span-5-62"><a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">        </span><span class="nx">Timestamp</span><span class="p">:</span><span class="w">  </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">qparams</span><span class="p">.</span><span class="nx">PrivNetParam</span><span class="p">.</span><span class="nx">GenesisBlock</span><span class="p">.</span><span class="nx">Block</span><span class="p">().</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()),</span>
+</span><span id="__span-5-63"><a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-64"><a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="p">}</span>
+</span><span id="__span-5-65"><a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a>
+</span><span id="__span-5-66"><a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="kd">func</span><span class="w"> </span><span class="nx">decodePrealloc</span><span class="p">()</span><span class="w"> </span><span class="nx">core</span><span class="p">.</span><span class="nx">GenesisAlloc</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-67"><a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="w">    </span><span class="nx">ga</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">core</span><span class="p">.</span><span class="nx">GenesisAlloc</span><span class="p">{}</span>
+</span><span id="__span-5-68"><a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a><span class="w">    </span><span class="c1">// ...and this too. The address and the amount allocated can be changed.</span>
+</span><span id="__span-5-69"><a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="w">    </span><span class="nx">ga</span><span class="p">[</span><span class="nx">qcommon</span><span class="p">.</span><span class="nx">HexToAddress</span><span class="p">(</span><span class="s">&quot;0x160d02d70A278De6dfB45a8854319a30D62E9f8E&quot;</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">core</span><span class="p">.</span><span class="nx">GenesisAccount</span><span class="p">{</span><span class="nx">Balance</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">Ether</span><span class="p">).</span><span class="nx">Mul</span><span class="p">(</span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">Ether</span><span class="p">),</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">10000000000</span><span class="p">))}</span>
+</span><span id="__span-5-70"><a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="w">    </span><span class="nx">ga</span><span class="p">[</span><span class="nx">qcommon</span><span class="p">.</span><span class="nx">HexToAddress</span><span class="p">(</span><span class="s">&quot;0xE79544b2A7C0946b42f8e7Cc0bdD6371fa9AD285&quot;</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">core</span><span class="p">.</span><span class="nx">GenesisAccount</span><span class="p">{</span><span class="nx">Balance</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">Ether</span><span class="p">).</span><span class="nx">Mul</span><span class="p">(</span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">Ether</span><span class="p">),</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">10000000000</span><span class="p">))}</span>
+</span><span id="__span-5-71"><a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="w">    </span><span class="nx">ga</span><span class="p">[</span><span class="nx">qcommon</span><span class="p">.</span><span class="nx">HexToAddress</span><span class="p">(</span><span class="s">&quot;0xedC4c57154bF81c28b4ba6263758DA2729897cE5&quot;</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">core</span><span class="p">.</span><span class="nx">GenesisAccount</span><span class="p">{</span><span class="nx">Balance</span><span class="p">:</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">Ether</span><span class="p">).</span><span class="nx">Mul</span><span class="p">(</span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="nx">params</span><span class="p">.</span><span class="nx">Ether</span><span class="p">),</span><span class="w"> </span><span class="nx">big</span><span class="p">.</span><span class="nx">NewInt</span><span class="p">(</span><span class="mi">10000000000</span><span class="p">))}</span>
+</span><span id="__span-5-72"><a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ga</span>
+</span><span id="__span-5-73"><a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In our example each of our sealers has <code>10000000000</code> Ether but this value and who recieves it can also be changed.</p>
+<h2 id="compile-qng-binary">Compile <em>qng</em> binary</h2>
+<p>Once <code>genesis.go</code> has been modified, you will need to compile the source code:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Enter the qng root directory</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">cd</span><span class="w"> </span>~/qng
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>make
+</span></code></pre></div>
+<p>If successful you should find a <code>qng</code> binary in the <code>qng/build/bin</code> directory. Copy this binary into the each of the node directories.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cp<span class="w"> </span>~/qng/build/bin/qng<span class="w"> </span>node1
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>cp<span class="w"> </span>~/qng/build/bin/qng<span class="w"> </span>node2
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>cp<span class="w"> </span>~/qng/build/bin/qng<span class="w"> </span>node3
+</span></code></pre></div>
+<h2 id="generate-node-files">Generate Node Files</h2>
+<p>To generate the neccesary files for your Amana network, run the following command <code>./qng -A ./ --privnet --amana --cleanup</code>for each Amana node.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./qng<span class="w"> </span>-A<span class="w"> </span>./<span class="w"> </span>--privnet<span class="w"> </span>--amana<span class="w"> </span>--cleanup
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.417<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>System<span class="w"> </span>info<span class="w">                         </span>QNG<span class="w"> </span><span class="nv">Version</span><span class="o">=</span><span class="m">1</span>.0.24+dev-4ba0c35-dirty<span class="w"> </span>Go<span class="w"> </span><span class="nv">version</span><span class="o">=</span>go1.20.5
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.417<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>System<span class="w"> </span>info<span class="w">                         </span>Home<span class="w"> </span><span class="nv">dir</span><span class="o">=</span>/home/xboxuser/test-amana/node1
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.417<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>block<span class="w"> </span>database<span class="w">              </span><span class="nv">dbPath</span><span class="o">=</span>/home/xboxuser/test-amana/node1/data/privnet/blocks_ffldb
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.448<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Block<span class="w"> </span>database<span class="w"> </span>loaded<span class="w"> </span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.448<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Removing<span class="w"> </span>block<span class="w"> </span>database<span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;/home/xboxuser/test-amana/node1/data/privnet/blocks_ffldb&#39;</span><span class="w"> </span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.449<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>cleanup:/home/xboxuser/test-amana/node1/data/privnet/meereth<span class="w"> </span><span class="nv">module</span><span class="o">=</span>MEER
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.449<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>cleanup:/home/xboxuser/test-amana/node1/data/privnet/amana<span class="w"> </span><span class="nv">module</span><span class="o">=</span>Amana
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.449<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>cleanup<span class="w"> </span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.449<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Gracefully<span class="w"> </span>shutting<span class="w"> </span>down<span class="w"> </span>the<span class="w"> </span>database...<span class="w"> </span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:17:18.449<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Shutdown<span class="w"> </span><span class="nb">complete</span>
+</span></code></pre></div>
+<p>You should see two further directories created: <code>data</code> and <code>logs</code>. </p>
+<h2 id="create-keystore">Create Keystore</h2>
+<p>This private key must be encrypted (with a password as the encryption key) and stored in each node directory as a JSON keystore directory. We can use  <code>eth-account</code> to encrypt the private key using password “amana1” with the output saved onto a JSON file. </p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># First create the keystore directories for each node</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>mkdir<span class="w"> </span><span class="nv">$NODE_1_DIRECTORY</span>/data/privnet/keystore
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>mkdir<span class="w"> </span><span class="nv">$NODE_2_DIRECTORY</span>/data/privnet/keystore
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>mkdir<span class="w"> </span><span class="nv">$NODE_3_DIRECTORY</span>/data/privnet/keystore
+</span></code></pre></div>
+<p>We will use a Python script to automate the process of creating the keystore file, and generating the <code>password.txt</code> for each of the nodes.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">eth_account</span> <span class="kn">import</span> <span class="n">Account</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span> <span class="nn">subprocess</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">NODE_1_DIRECTORY</span> <span class="o">+</span> <span class="s2">&quot;/data/privnet/keystore/keystore_1.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">node1_file</span><span class="p">:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>        <span class="c1"># Encrypt our private key using the passphrase &quot;amana1&quot;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>      <span class="n">node_1_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Account</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">PRIV_KEY_1</span><span class="p">,</span> <span class="s2">&quot;amana1&quot;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>      <span class="n">node1_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">node_1_json</span><span class="p">)</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">NODE_2_DIRECTORY</span> <span class="o">+</span> <span class="s2">&quot;/data/privnet/keystore/keystore_2.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">node2_file</span><span class="p">:</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="n">node_2_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Account</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">PRIV_KEY_2</span><span class="p">,</span> <span class="s2">&quot;amana1&quot;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="n">node2_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">node_2_json</span><span class="p">)</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">NODE_3_DIRECTORY</span> <span class="o">+</span> <span class="s2">&quot;/data/privnet/keystore/keystore_3.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">node3_file</span><span class="p">:</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="n">node_3_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Account</span><span class="o">.</span><span class="n">encrypt</span><span class="p">(</span><span class="n">PRIV_KEY_3</span><span class="p">,</span> <span class="s2">&quot;amana1&quot;</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="n">node3_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">node_3_json</span><span class="p">)</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="c1"># Password files to unlock accounts</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;cp password.txt &quot;</span> <span class="o">+</span> <span class="n">NODE_1_DIRECTORY</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;cp password.txt &quot;</span> <span class="o">+</span> <span class="n">NODE_2_DIRECTORY</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="s2">&quot;cp password.txt &quot;</span> <span class="o">+</span> <span class="n">NODE_3_DIRECTORY</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+</span></code></pre></div>
+<h2 id="generate-config-file">Generate Config file</h2>
+<p>Each node would need an configuration file with some changes needing to be made (usually port numbers if nodes are ran locally). Config files are in the TOML format.</p>
+<p>Example config file:</p>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">privnet</span><span class="o">=</span><span class="kc">true</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">amana</span><span class="o">=</span><span class="kc">true</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">amanaenv</span><span class="o">=</span><span class="s">&quot;--unlock 0x160d02d70A278De6dfB45a8854319a30D62E9f8E --port 37000 --password password.txt --http --http.api=eth,net,web3,amana --http.corsdomain=* --http.port 8545 --allow-insecure-unlock miner.etherbase 0x160d02d70A278De6dfB45a8854319a30D62E9f8E --mine&quot;</span>
+</span></code></pre></div>
+<h2 id="running-amana-node">Running Amana Node</h2>
+<p>To start the Amana node, run the command: <code>./qng -A ./ -C config.toml</code></p>
+<p>(<code>config.toml</code> is what we have named our configuration file).</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>./qng<span class="w"> </span>-A<span class="w"> </span>./<span class="w"> </span>-C<span class="w"> </span>config.toml
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.734<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>System<span class="w"> </span>info<span class="w">                         </span>QNG<span class="w"> </span><span class="nv">Version</span><span class="o">=</span><span class="m">1</span>.0.24+dev-4ba0c35-dirty<span class="w"> </span>Go<span class="w"> </span><span class="nv">version</span><span class="o">=</span>go1.20.5
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.737<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>System<span class="w"> </span>info<span class="w">                         </span>Home<span class="w"> </span><span class="nv">dir</span><span class="o">=</span>./
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.737<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Loading<span class="w"> </span>block<span class="w"> </span>database<span class="w">              </span><span class="nv">dbPath</span><span class="o">=</span>/home/xboxuser/qng_privnet/node2/data/privnet/blocks_ffldb
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.810<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Block<span class="w"> </span>database<span class="w"> </span>loaded<span class="w"> </span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.816<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>transaction<span class="w"> </span>index<span class="w"> </span>is<span class="w"> </span>enabled<span class="w">        </span><span class="nv">module</span><span class="o">=</span>INDEX
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.827<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>anticone<span class="w"> </span>size:4<span class="w">                     </span><span class="nv">module</span><span class="o">=</span>DAG
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:14.830<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>System<span class="w"> </span>info<span class="w">                         </span><span class="nv">module</span><span class="o">=</span>EVM<span class="w">   </span>ETH<span class="w"> </span>VM<span class="w"> </span><span class="nv">Version</span><span class="o">=</span>meervm-v0.0.2<span class="w"> </span>Go<span class="w"> </span><span class="nv">version</span><span class="o">=</span>go1.20.5
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.065<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>New<span class="w"> </span><span class="nb">local</span><span class="w"> </span>node<span class="w"> </span>record<span class="w">               </span><span class="nv">seq</span><span class="o">=</span><span class="m">1696052415063</span><span class="w"> </span><span class="nv">id</span><span class="o">=</span>8642152b221a63ca<span class="w"> </span><span class="nv">ip</span><span class="o">=</span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="nv">udp</span><span class="o">=</span><span class="m">8538</span><span class="w"> </span><span class="nv">tcp</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.107<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Prepare<span class="w"> </span>meereth<span class="w"> </span>on<span class="w"> </span>NetWork<span class="o">(</span><span class="m">8133</span><span class="o">)</span>...<span class="w"> </span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.113<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Maximum<span class="w"> </span>peer<span class="w"> </span>count<span class="w">                  </span><span class="nv">ETH</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">LES</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">total</span><span class="o">=</span><span class="m">0</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.120<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Smartcard<span class="w"> </span>socket<span class="w"> </span>not<span class="w"> </span>found,<span class="w"> </span>disabling<span class="w"> </span><span class="nv">err</span><span class="o">=</span><span class="s2">&quot;stat /run/pcscd/pcscd.comm: no such file or directory&quot;</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.141<span class="w"> </span><span class="o">[</span>WARN<span class="w"> </span><span class="o">]</span><span class="w"> </span>Sanitizing<span class="w"> </span>cache<span class="w"> </span>to<span class="w"> </span>Go<span class="err">&#39;</span>s<span class="w"> </span>GC<span class="w"> </span>limits<span class="w">  </span><span class="nv">provided</span><span class="o">=</span><span class="m">4096</span><span class="w"> </span><span class="nv">updated</span><span class="o">=</span><span class="m">1303</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.145<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Set<span class="w"> </span>global<span class="w"> </span>gas<span class="w"> </span>cap<span class="w">                  </span><span class="nv">cap</span><span class="o">=</span><span class="m">50000000</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.150<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Allocated<span class="w"> </span>trie<span class="w"> </span>memory<span class="w"> </span>caches<span class="w">        </span><span class="nv">clean</span><span class="o">=</span><span class="m">195</span>.00MiB<span class="w"> </span><span class="nv">dirty</span><span class="o">=</span><span class="m">325</span>.00MiB
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.154<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>leveldb<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>backing<span class="w"> </span>database<span class="w"> </span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.155<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Allocated<span class="w"> </span>cache<span class="w"> </span>and<span class="w"> </span>file<span class="w"> </span>handles<span class="w">    </span><span class="nv">database</span><span class="o">=</span>/home/xboxuser/qng_privnet/node2/data/privnet/meereth/chaindata<span class="w"> </span><span class="nv">cache</span><span class="o">=</span><span class="m">649</span>.00MiB<span class="w"> </span><span class="nv">handles</span><span class="o">=</span><span class="m">524288</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.232<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Using<span class="w"> </span>LevelDB<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>backing<span class="w"> </span>database<span class="w"> </span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.284<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Opened<span class="w"> </span>ancient<span class="w"> </span>database<span class="w">             </span><span class="nv">database</span><span class="o">=</span>/home/xboxuser/qng_privnet/node2/data/privnet/meereth/chaindata/ancient/chain<span class="w"> </span><span class="nv">readonly</span><span class="o">=</span><span class="nb">false</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.340<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Disk<span class="w"> </span>storage<span class="w"> </span>enabled<span class="w"> </span><span class="k">for</span><span class="w"> </span>MeerEngine<span class="w"> </span>caches<span class="w"> </span><span class="nv">dir</span><span class="o">=</span>/home/xboxuser/qng_privnet/node2/data/privnet/meereth/ethash<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">3</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.341<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Disk<span class="w"> </span>storage<span class="w"> </span>enabled<span class="w"> </span><span class="k">for</span><span class="w"> </span>MeerEngine<span class="w"> </span>DAGs<span class="w"> </span><span class="nv">dir</span><span class="o">=</span>/home/xboxuser/qng_privnet/node2/data/privnet/meereth/ethash/dataset<span class="w"> </span><span class="nv">count</span><span class="o">=</span><span class="m">2</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:15.345<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Initialising<span class="w"> </span>Ethereum<span class="w"> </span>protocol<span class="w">      </span><span class="nv">network</span><span class="o">=</span><span class="m">8133</span><span class="w"> </span><span class="nv">dbversion</span><span class="o">=</span><span class="m">8</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:16.144<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w">  </span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:16.155<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>---------------------------------------------------------------------------------------------------------------------------------------------------------<span class="w"> </span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="m">2023</span>-09-30<span class="p">|</span><span class="m">06</span>:40:16.155<span class="w"> </span><span class="o">[</span>INFO<span class="w"> </span><span class="o">]</span><span class="w"> </span>Chain<span class="w"> </span>ID:<span class="w">  </span><span class="m">8133</span><span class="w"> </span><span class="o">(</span>qng-priv<span class="o">)</span>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>...
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>.__<span class="w">  </span>__<span class="w">                                                                    </span>
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a><span class="w">    </span>_____<span class="p">|</span>__<span class="p">|</span>/<span class="w">  </span><span class="p">|</span>_<span class="w">  </span>_____<span class="w">   </span>____<span class="w">   </span>___________<span class="w">    </span>QNG<span class="w"> </span><span class="m">1</span>.0.24+dev-4ba0c35-dirty
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a><span class="w">   </span>/<span class="w"> </span>____/<span class="w">  </span><span class="se">\ </span><span class="w">  </span>__<span class="se">\/</span><span class="w">     </span><span class="se">\_</span>/<span class="w"> </span>__<span class="w"> </span><span class="se">\_</span>/<span class="w"> </span>__<span class="w"> </span><span class="se">\_</span><span class="w">  </span>__<span class="w"> </span><span class="se">\ </span><span class="w">  </span>Port:<span class="w"> </span><span class="m">38130</span>
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a><span class="w">  </span>&lt;<span class="w"> </span>&lt;_<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="o">||</span><span class="w">  </span><span class="p">|</span><span class="w"> </span><span class="p">|</span><span class="w">  </span>Y<span class="w"> </span>Y<span class="w">  </span><span class="se">\ </span><span class="w"> </span>___/<span class="se">\ </span><span class="w"> </span>___/<span class="p">|</span><span class="w">  </span><span class="p">|</span><span class="w"> </span><span class="se">\/</span><span class="w">   </span>PID<span class="w"> </span>:<span class="w"> </span><span class="m">266551</span>
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a><span class="w">   </span><span class="se">\_</span>_<span class="w">   </span><span class="p">|</span>__<span class="o">||</span>__<span class="p">|</span><span class="w"> </span><span class="p">|</span>__<span class="p">|</span>_<span class="p">|</span><span class="w">  </span>/<span class="se">\_</span>__<span class="w">  </span>&gt;<span class="se">\_</span>__<span class="w">  </span>&gt;__<span class="p">|</span><span class="w">      </span>Network<span class="w"> </span>:<span class="w"> </span>privnet<span class="w">                      </span>
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a><span class="w">      </span><span class="p">|</span>__<span class="p">|</span><span class="w">              </span><span class="se">\/</span><span class="w">     </span><span class="se">\/</span><span class="w">     </span><span class="se">\/</span><span class="w">          </span>https://github.com/Qitmeer/qng
+</span></code></pre></div>
+<h2 id="running-proxy">Running Proxy</h2>
+<p>To run the proxy enter the command: <code>python3 [proxy.py](http://proxy.py)</code></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python3<span class="w"> </span>proxy.py
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>*<span class="w"> </span>Serving<span class="w"> </span>Flask<span class="w"> </span>app<span class="w"> </span><span class="s1">&#39;proxy&#39;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w"> </span>*<span class="w"> </span>Debug<span class="w"> </span>mode:<span class="w"> </span>off
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>WARNING:<span class="w"> </span>This<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>development<span class="w"> </span>server.<span class="w"> </span>Do<span class="w"> </span>not<span class="w"> </span>use<span class="w"> </span>it<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>production<span class="w"> </span>deployment.<span class="w"> </span>Use<span class="w"> </span>a<span class="w"> </span>production<span class="w"> </span>WSGI<span class="w"> </span>server<span class="w"> </span>instead.
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w"> </span>*<span class="w"> </span>Running<span class="w"> </span>on<span class="w"> </span>http://localhost:5000
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Press<span class="w"> </span>CTRL+C<span class="w"> </span>to<span class="w"> </span>quit
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;eth_getBlockByNumber&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[</span><span class="s2">&quot;latest&quot;</span>,false<span class="o">]</span>,<span class="s2">&quot;id&quot;</span>:42,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;eth_chainId&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[]</span>,<span class="s2">&quot;id&quot;</span>:43,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;net_version&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[]</span>,<span class="s2">&quot;id&quot;</span>:44,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:54<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;net_version&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[]</span>,<span class="s2">&quot;id&quot;</span>:45,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:55<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:55<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;eth_accounts&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[]</span>,<span class="s2">&quot;id&quot;</span>:46,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:55<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-27"><a id="__codelineno-13-27" name="__codelineno-13-27" href="#__codelineno-13-27"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:55<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-28"><a id="__codelineno-13-28" name="__codelineno-13-28" href="#__codelineno-13-28"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;eth_getBalance&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[</span><span class="s2">&quot;0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266&quot;</span>,<span class="s2">&quot;latest&quot;</span><span class="o">]</span>,<span class="s2">&quot;id&quot;</span>:47,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-29"><a id="__codelineno-13-29" name="__codelineno-13-29" href="#__codelineno-13-29"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span><span id="__span-13-30"><a id="__codelineno-13-30" name="__codelineno-13-30" href="#__codelineno-13-30"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:55<span class="o">]</span><span class="w"> </span><span class="s2">&quot;POST / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-31"><a id="__codelineno-13-31" name="__codelineno-13-31" href="#__codelineno-13-31"></a><span class="m">127</span>.0.0.1<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">30</span>/Sep/2023<span class="w"> </span><span class="m">06</span>:49:55<span class="o">]</span><span class="w"> </span><span class="s2">&quot;OPTIONS / HTTP/1.1&quot;</span><span class="w"> </span><span class="m">200</span><span class="w"> </span>-
+</span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="o">{</span><span class="s2">&quot;method&quot;</span>:<span class="s2">&quot;eth_getBalance&quot;</span>,<span class="s2">&quot;params&quot;</span>:<span class="o">[</span><span class="s2">&quot;0x70997970c51812dc3a010c7d01b50e0d17dc79c8&quot;</span>,<span class="s2">&quot;latest&quot;</span><span class="o">]</span>,<span class="s2">&quot;id&quot;</span>:48,<span class="s2">&quot;jsonrpc&quot;</span>:<span class="s2">&quot;2.0&quot;</span><span class="o">}</span>
+</span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a>&lt;Response<span class="w"> </span><span class="o">[</span><span class="m">200</span><span class="o">]</span>&gt;
+</span></code></pre></div>
+<p>The verbose output is the result of connecting the proxy to Remix IDE which sends multiple JSON-RPC requests very frequently. </p>
+<h2 id="deploy-acl-smart-contract-to-amana">Deploy ACL Smart Contract to Amana</h2>
+<p>Because Amana is EVM compatible, the steps needed to deploy a smart contract is very similar to other EVM compatible networks. We can use <code>Hardhat</code> and the <code>ethers.js</code> library to create a JS script to automate the deployment. The script would also insert an address(in this case <code>0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266</code>) to be put into the whitelist.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>// deploy.js 
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>const fs = require(&#39;fs&#39;);
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>async function main() {
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    const [deployer] = await ethers.getSigners();
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    console.log(&quot;Deploying contracts with the account:&quot;, deployer.address);
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>    const permission = await ethers.deployContract(&quot;Permission&quot;);
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    const address = await permission.getAddress();
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    console.log(&quot;Contract Address:&quot;, address);
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    const content = &quot;ADDRESS=&quot;+ address;
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>    try {
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>        fs.writeFileSync(&quot;.env&quot;, content);
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>        // file written successfully
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    } catch (err) {
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>        console.error(err);
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>    }
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>    // Insert test data
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>   let tx = await permission.addToWhitelist(&quot;0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266&quot;);
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>    await tx.wait()
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>  }
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>  main()
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>    .then(() =&gt; process.exit(0))
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>    .catch((error) =&gt; {
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a>      console.error(error);
+</span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>      process.exit(1);
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>    });
+</span></code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../solidity_tutorial_basics_part_3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Solidity Tutorial (Part 3)">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Solidity Tutorial (Part 3)
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../AWS_deploy_amana_privnet/" class="md-footer__link md-footer__link--next" aria-label="Next: Deploy Private Amana Network (AWS)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Deploy Private Amana Network (AWS)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://t.me/+L5nExcssmOxjZTc0" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6eac0284.min.js"></script>
+      
+    
+  </body>
+</html>
