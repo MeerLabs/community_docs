@@ -373,3 +373,45 @@ async function main() {
       process.exit(1);
     });
 ```
+
+## Notes from Recent QNG v2.3 Testing
+
+During recent testing with QNG v2.3, some differences were observed compared to the older setup described above.
+
+### What worked
+
+- The launcher helped with initial setup, but it was not enough on its own for a fully working multi-node PoA network in the latest version.
+- Using a manual setup (based on the newer QNG v2.3 workflow), a 3-node private network was successfully created.
+- All three nodes connected correctly.
+- PoA workers started and blocks were produced and synced across nodes.
+
+### What we observed
+
+- `qng.getPeerInfo()` gave the correct view of connected peers, while `admin.peers` and `net.peerCount` were not reliable in this setup.
+- When one validator node was stopped, the network stayed connected but block production stopped.
+- Restarting the node allowed it to reconnect and sync, but block production did not start again.
+- Even after restarting all nodes, the network did not resume block production automatically.
+- This suggests that the network can get stuck after a failure.
+
+### Documentation gaps
+
+While testing, a few areas were not clearly explained in the current documentation:
+
+- how to set up a multi-node PoA network in newer QNG versions  
+- how to configure ports for multiple local nodes  
+- how to set up bootstrap connections correctly  
+- how validator configuration works in newer versions  
+- which API methods should be used to check network status  
+- what to expect during node failure and recovery  
+
+### Launcher notes
+
+The launcher is still useful because it saves time and automates setup steps like creating nodes, generating keys, and preparing configs.
+
+However, it seems to be based on older QNG behaviour. To improve it for newer versions, it would help to:
+
+- update or remove outdated flags  
+- align it with the current QNG v2.3 setup process  
+- handle ports more clearly  
+- check that nodes are actually producing blocks  
+- include clearer setup and troubleshooting instructions  
