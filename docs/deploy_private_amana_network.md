@@ -373,3 +373,54 @@ async function main() {
       process.exit(1);
     });
 ```
+
+## Notes from Recent QNG v2.3 Testing
+
+During recent testing with QNG v2.3, a few differences were noticed compared to the older setup described above.
+
+### What worked
+
+- The launcher was useful for initial setup, but it was not enough on its own to get a fully working multi-node PoA network in the latest version.
+- A manual setup (based on the updated QNG v2.3 approach) worked successfully for a 3-node private network.
+- All three nodes connected properly.
+- PoA workers started, and blocks were produced and synced across the nodes.
+
+### Version comparison (QNG v2.0 vs v2.3)
+
+In earlier testing with QNG v2.0, the launcher-based setup worked more smoothly. After fixing some port and configuration issues, the nodes were able to connect and blocks were produced successfully.
+
+However, in QNG v2.3, the same launcher approach did not work properly without additional fixes. This suggests that the launcher is based on older behaviour and needs updating to fully support newer QNG versions.
+
+### What was observed
+
+- `qng.getPeerInfo()` gave a more accurate view of connected peers, while `admin.peers` and `net.peerCount` were not reliable in this setup.
+- When one validator node was stopped, the network stayed connected, but block production stopped.
+- Restarting the node allowed it to reconnect and sync, but block production did not start again.
+- Even after restarting all nodes, the network still did not resume block production.
+- This suggests that the network can get stuck after a failure and may need manual intervention to recover.
+- In local multi-node testing, correct port assignment is important. Some earlier issues were caused by port conflicts or unclear default port behaviour.
+- These tests also show that node rejoining and automatic recovery still need more investigation in the current PoA setup.
+
+### Documentation gaps
+
+While testing, a few areas were not clearly explained in the current documentation:
+
+- how to set up a multi-node PoA network in newer QNG versions  
+- how to configure ports for multiple local nodes  
+- how to set up bootstrap connections correctly  
+- how validator configuration works in newer versions  
+- which API methods should be used to check network status  
+- what to expect during node failure and recovery  
+
+### Launcher notes
+
+The launcher is still helpful because it saves time and automates setup steps like creating nodes, generating keys, and preparing configs.
+
+However, it seems to be based on older QNG behaviour and does not fully match the latest version. To improve it, it would help to:
+
+- update or remove outdated flags  
+- align it with the current QNG v2.3 setup process  
+- handle ports more clearly  
+- check that nodes are actually producing blocks  
+- include clearer setup and troubleshooting instructions  
+- make the required Python dependencies and setup steps clearer, as this caused some confusion during testing
